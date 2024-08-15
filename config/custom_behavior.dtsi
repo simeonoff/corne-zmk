@@ -1,0 +1,21 @@
+/ {
+    behaviors {
+        ctrl_esc: ctrl_esc {
+            compatible = "zmk,behavior-hold-tap";
+            tap-behavior = <&kp ESC>;  // Tap behavior sends Escape
+            hold-behavior = <&kp LCTRL>;  // Hold behavior sends Ctrl
+        };
+
+        sym_bspc: sym_bspc {
+            compatible = "zmk,behavior-hold-tap";
+            tap-behavior = <&kp BSPC>;  // Tap behavior sends Backspace
+            hold-behavior = <&mo SYM>;  // Hold behavior activates Layer 3
+        };
+
+        swapper: swapper {
+            compatible = "zmk,behavior-tri-state";
+            #binding-cells = <0>;
+            bindings = <&kt RGUI>, <&kp TAB>, <&kt RGUI>;  // Cmd, Tab, and release Cmd
+            ignored-key-positions = <7 9 16 17 18 19 29>;   // Ignore arrows, BSPC, ENTER, DEL
+        };
+};

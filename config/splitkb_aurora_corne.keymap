@@ -7,13 +7,14 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
-#include "custom_behavior.dtsi"
 
 #define COL 0
 #define QWR 1
 #define NAV 2
 #define SYM 3
 #define NUM 4
+
+#include "custom_behavior.dtsi"
 
 / {
         keymap {

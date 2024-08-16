@@ -1,6 +1,6 @@
 / {
     behaviors {
-        swapper: swapper {
+        sw_win: swapper {
             compatible = "zmk,behavior-tri-state";
             #binding-cells = <0>;
             bindings = <&kt RGUI>, <&kp TAB>, <&kt RGUI>;  // Cmd, Tab, and release Cmd

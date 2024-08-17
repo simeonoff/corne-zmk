@@ -2,6 +2,7 @@
 .direnv
 .venv
 .west
+.DS_Store
 modules
 firmware
 zephyr

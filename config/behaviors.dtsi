@@ -1,0 +1,45 @@
+/*                KEY POSITIONS
+
+  ╭─────────────────────────╮   ╭─────────────────────────╮
+  │ LT5 LT4 LT3 LT2 LT1 LT0 │   │ RT0 RT1 RT2 RT3 RT4 RT5 │
+  │ LM5 LM4 LM3 LM2 LM1 LM0 │   │ RM0 RM1 RM2 RM3 RM4 RM5 │
+  │ LB5 LB4 LB3 LB2 LB1 LB0 │   │ RB0 RB1 RB2 RB3 RB4 RB5 │
+  ╰───────────╮ LH2 LH1 LH0 │   │ RH0 RH1 RH2 ╭───────────╯
+              ╰─────────────╯   ╰─────────────╯ */
+
+#define COMBO_TERM_FAST 18
+#define COMBO_TERM_SLOW 30
+
+#define COMBO_IDLE_FAST 150
+#define COMBO_IDLE_SLOW 50
+
+// implements alt+tab behavior
+ZMK_TRI_STATE(alt_tab,
+    bindings = <&kt RGUI>, <&kp TAB>, <&kt RGUI>;
+    ignored-key-positions = <LT4 LH2 RM0 RM1 RM2 RM3>;   // Ignore Q, ENTER and Arrows 
+)
+
+// tap: play/pause | double-tap: next song | tripple-tap: previous song
+ZMK_TAP_DANCE(play_np,
+    tapping-term-ms = <300>;
+    bindings = <&kp C_PLAY_PAUSE>, <&kp C_NEXT>, <&kp C_PREVIOUS>;
+)
+
+// tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
+ZMK_MOD_MORPH(up_shift,
+    bindings = <&sk LSHFT>, <&caps_word>;
+    mods = <(MOD_LSFT)>;
+)
+
+// tap: key 2 | quick tap: key 2 | hold: key 1 
+ZMK_HOLD_TAP(lkp,
+    flavor = "tap-preferred";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <200>;
+    bindings = <&mo>, <&kp>;
+)
+
+//ZMK_COMBO(sh, &ru_sh, LT2 LT1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+//ZMK_COMBO(sht, &ru_shch, LM2 LM1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+//ZMK_COMBO(ch, &ru_ch, LB2 LB1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+//ZMK_COMBO(yu, &ru_yu, RT2 RT1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)

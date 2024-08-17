@@ -1,0 +1,56 @@
+/*                KEY POSITIONS
+
+  ╭─────────────────────────╮   ╭─────────────────────────╮
+  │ LT5 LT4 LT3 LT2 LT1 LT0 │   │ RT0 RT1 RT2 RT3 RT4 RT5 │
+  │ LM5 LM4 LM3 LM2 LM1 LM0 │   │ RM0 RM1 RM2 RM3 RM4 RM5 │
+  │ LB5 LB4 LB3 LB2 LB1 LB0 │   │ RB0 RB1 RB2 RB3 RB4 RB5 │
+  ╰───────────╮ LH2 LH1 LH0 │   │ RH0 RH1 RH2 ╭───────────╯
+              ╰─────────────╯   ╰─────────────╯ */
+
+ZMK_MACRO(cast,
+    bindings 
+        = <&macro_press &kp LGUI>
+        , <&macro_tap &kp SPACE>
+        , <&macro_release &kp LGUI>
+        ;
+)
+
+ZMK_MACRO(lang,
+    bindings 
+        = <&macro_press &kp LALT>
+        , <&macro_tap &kp SPACE>
+        , <&macro_release &kp LALT>
+        ;
+)
+
+ZMK_MACRO(prev_d,
+    bindings = <&macro_tap &kp LBKT &kp D>;
+)
+
+ZMK_MACRO(next_d,
+    bindings = <&macro_tap &kp RBKT &kp D>;
+)
+
+ZMK_MACRO(prev_c,
+    bindings = <&macro_tap &kp LBKT &kp C>;
+)
+
+ZMK_MACRO(next_c,
+    bindings = <&macro_tap &kp RBKT &kp C>;
+)
+
+ZMK_MACRO(next_view,
+    bindings 
+        = <&macro_press &kp LALT &kp LSHFT>
+        , <&macro_tap &kp SPACE>
+        , <&macro_release &kp LALT &kp LSHFT>
+        ;
+)
+
+ZMK_MACRO(full_view,
+    bindings 
+        = <&macro_press &kp LALT &kp LSHFT>
+        , <&macro_tap &kp D>
+        , <&macro_release &kp LALT &kp LSHFT>
+        ;
+)

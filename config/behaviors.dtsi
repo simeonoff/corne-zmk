@@ -40,6 +40,8 @@ ZMK_HOLD_TAP(lkp,
 ZMK_STICKY_KEY(skm,
     release-after-ms = <3500>;
     bindings = <&kp>;
+    quick-release;
+    ignore-modifiers;
 )
 
 // implements alt+tab behavior

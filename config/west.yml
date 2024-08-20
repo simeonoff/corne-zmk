@@ -2,8 +2,6 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: dhruvinsh
-      url-base: https://github.com/dhruvinsh
     - name: urob
       url-base: https://github.com/urob
   projects:
@@ -12,11 +10,16 @@ manifest:
       revision: main
       import: app/west.yml
     - name: zmk-tri-state
-      remote: dhruvinsh
+      remote: urob
       revision: main
       path: modules/tri-state
     - name: zmk-helpers
       remote: urob
       revision: main
+      path: modules/helpers
+    - name: zmk-auto-layer
+      remote: urob
+      revision: main
+      path: modules/auto-layer
   self:
     path: config

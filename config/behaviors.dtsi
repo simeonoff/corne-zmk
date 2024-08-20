@@ -13,9 +13,10 @@
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
-&sk {  // sticky-key config
-    release-after-ms = <900>;  // release after 0.9s
-    quick-release;             // no double capitalization when rolling keys
+#define QUICK_TAP_MS 175
+
+&num_word {
+  continue-list = <BSPC SPACE LCTL DEL DOT COMMA PLUS MINUS STAR CARET FSLH EQUAL>;
 };
 
 ZMK_MOD_MORPH(lshft,
@@ -29,14 +30,14 @@ ZMK_MOD_MORPH(rshft,
 )
 
 // tap: key 2 | quick tap: key 2 | hold: key 1 
-ZMK_HOLD_TAP(lkp,
+ZMK_HOLD_TAP(qlt,
     flavor = "tap-preferred";
     tapping-term-ms = <200>;
-    quick-tap-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&kp>;
 )
 
-// Sticky mods are released after 3.5s
+// Sticky mods with quick release
 ZMK_STICKY_KEY(skm,
     release-after-ms = <3500>;
     bindings = <&kp>;
@@ -47,7 +48,7 @@ ZMK_STICKY_KEY(skm,
 // implements alt+tab behavior
 ZMK_TRI_STATE(alt_tab,
     bindings = <&kt RGUI>, <&kp TAB>, <&kt RGUI>;
-    ignored-key-positions = <LT4 LH2 RM0 RM1 RM2 RM3>;   // Ignore Q, ENTER and Arrows 
+    ignored-key-positions = <RM0 RM1 RM2 RM3>;   // Ignore Arrows 
 )
 
 // tap: play/pause | double-tap: next song | tripple-tap: previous song
@@ -56,8 +57,23 @@ ZMK_TAP_DANCE(play_np,
     bindings = <&kp C_PLAY_PAUSE>, <&kp C_NEXT>, <&kp C_PREVIOUS>;
 )
 
+// tap: num-word | double-tap: sticky num-layer | hold: num-layer
+ZMK_HOLD_TAP(smart_num,
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+    bindings = <&mo>, <&num_dance>;
+)
+
+ZMK_TAP_DANCE(num_dance,
+    tapping-term-ms = <200>;
+    bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
+)
+
 // Cyrillic alphabet combos
 ZMK_COMBO(sh, &kp LBKT, LT2 LT1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(sht, &kp RBKT, LM2 LM1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(ch, &kp GRAVE, LB2 LB1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 ZMK_COMBO(yu, &kp BSLH, RT2 RT1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+/* vim: set ft=c tw=174: */

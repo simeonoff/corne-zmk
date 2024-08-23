@@ -13,6 +13,7 @@
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+#define TAPPING_TERM_MS 200
 #define QUICK_TAP_MS 175
 
 &num_word {
@@ -31,9 +32,9 @@ ZMK_MOD_MORPH(rshft,
 
 // tap: key 2 | quick tap: key 2 | hold: key 1 
 ZMK_HOLD_TAP(qlt,
-    flavor = "tap-preferred";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
+    flavor = "balanced";
+    tapping-term-ms = <TAPPING_TERM_MS>;
+    quick-tap-ms = <200>;
     bindings = <&mo>, <&kp>;
 )
 
@@ -60,20 +61,20 @@ ZMK_TAP_DANCE(play_np,
 // tap: num-word | double-tap: sticky num-layer | hold: num-layer
 ZMK_HOLD_TAP(smart_num,
     flavor = "balanced";
-    tapping-term-ms = <200>;
+    tapping-term-ms = <TAPPING_TERM_MS>;
     quick-tap-ms = <QUICK_TAP_MS>;
     bindings = <&mo>, <&num_dance>;
 )
 
 ZMK_TAP_DANCE(num_dance,
-    tapping-term-ms = <200>;
+    tapping-term-ms = <TAPPING_TERM_MS>;
     bindings = <&num_word NUM>, <&sl NUM>;  // reverse this for sticky-num on single tap
 )
 
 // Cyrillic alphabet combos
-ZMK_COMBO(sh, &kp LBKT, LT2 LT1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(sht, &kp RBKT, LM2 LM1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(ch, &kp GRAVE, LB2 LB1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(yu, &kp BSLH, RT2 RT1, COL QWR, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(sh, &kp LBKT, LT2 LT1, DEF, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(sht, &kp RBKT, LM2 LM1, DEF, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(ch, &kp GRAVE, LB2 LB1, DEF, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(yu, &kp BSLH, RT2 RT1, DEF, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 /* vim: set ft=c tw=174: */
